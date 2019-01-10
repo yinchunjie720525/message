@@ -62,7 +62,7 @@ header{
     width: 64%;
     margin: 20px auto;
     display: flex;
-    justify-content: space-between
+    justify-content: space-between9
 }
 .new .lf{
     width: 5%;

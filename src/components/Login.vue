@@ -14,9 +14,11 @@
                     </div>
                     <input type="hidden" name="send" value="1">
                     <button type="button" @click="getLogin" class="login">登录</button>
+                    <br>
                     <div>{{error}}</div>
                 </form>
             </div>
+        <a href="http://yindada.gz01.bdysite.com/Register">您没有账号，请先注册!</a>
         </section>
     </div>
 </template>
@@ -75,6 +77,9 @@
 </script>
 
 <style scoped>
+.register{
+    text-align: center
+}
     .container{
         width: 50%;
         margin: 50px auto 0;
@@ -103,5 +108,9 @@
         margin-left: 55px;
         background: green;
         color: #fff;
+    }
+    a{
+        color:#2bc6e2;
+        font-size: 12px; 
     }
 </style>

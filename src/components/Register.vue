@@ -25,11 +25,11 @@
                 </li>
                 <li>
                     <label></label>
-                    <button type="submit">注册用户</button>
+                    <button type="submit" class="button">注册用户</button>
                 </li>
             </ul>
         </form>
-        
+        <a href="http://yindada.gz01.bdysite.com/Login">您已有账号，请登录!</a>
     </div>
 </template>
 
@@ -94,12 +94,19 @@
                     username:this.users.name,
                     password:this.users.pass,
                     checkpass:this.users.checkpass,
-                    userAvatar:this.users.imageUrl
+                    userAvatar:encodeURIComponent(this.users.imageUrl)
                 }
                 formData = this.qs.stringify(formData);
+                console.log(1)
                 this.axios.post('http://yindada.gz01.bdysite.com/api/registerSave.php',formData)
-                .then((res)=>{
-                    console.log(res)
+                .then(res=>{
+                    if(res.data.valid==true){
+                        this.$router.push({path:'/Login'})
+                    }else{
+                        this.error=res.data
+                    }
+                }).catch(error=>{
+                    console.log(error)
                 })
             }
         },
@@ -122,6 +129,7 @@
 </script>
 
 <style scoped>
+
    .form-block{
         width:600px;
         margin:25px auto;
@@ -184,7 +192,7 @@
     #checkpass{
         width: 300px;
     }
-    button{
+    .button{
         width: 150px;
         height: 35px;
         border: none;
@@ -193,5 +201,12 @@
         margin-top: 20px;
         background: green;
         color: #fff;
+    }
+    a{
+        color:#2bc6e2;
+        font-size: 12px; 
+        display: block;
+        margin:0 auto;
+        width: 270px;
     }
 </style>

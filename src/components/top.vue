@@ -7,8 +7,8 @@
     </div>
     <div class="nav">
         <ul>
-            <li class="red">
-                <router-link to="/">首页</router-link>
+            <li>
+                <router-link to="/" exact>首页</router-link>
             </li>
             <li>
                 <router-link to="/newPost">发布聊天室</router-link>
@@ -29,8 +29,7 @@
         name:'top',
         props:{
             system:Object
-    }
-   
+        }
     }
 </script>
 
@@ -117,7 +116,7 @@ body{
     padding: 0 15px;
     text-align: center;
 }
-.red{
+.nav ul li a.router-link-exact-active{
     background: red;
 }
 </style>

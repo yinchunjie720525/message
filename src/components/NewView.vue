@@ -70,7 +70,7 @@
         newsview: [],
         commentslength: 0,
         newsContent: {},
-        userAvatar: "https://wx.hzbiz.net/",
+        userAvatar: "http://yindada.gz01.bdysite.com/",
         start: 0,
         end: 10,
         content: '',
@@ -114,9 +114,15 @@
       },
          chatAddContent() {
                let formData = {
-          chatId:3,
-          userId:135,
+          // chatId:3,
+          // userId:135,
+          chatId:this.id,
+          userId:$cookies.get('userId'),
           content:this.content
+        };
+        if($cookies.get('userId')==null){
+          alert('您还没有登录！')
+                     this.$router.push({path:'/Login'})
         };
         let ly = qs.stringify(formData);
         this.axios.post('http://yindada.gz01.bdysite.com/api/messageAdd.php',ly).then(res=>{
@@ -144,6 +150,7 @@
     created() {
       this.getChatall(this.start, this.end)
       console.log($cookies.get('userId'))
+      console.log(this.newsview)
     },
     mounted(){}
   }
